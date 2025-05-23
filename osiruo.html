@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OSiRuO</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 3em;
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    marquee {
+      font-size: 1.5em;
+      margin: 20px 0;
+      color: #00ff00;
+      text-shadow: 0 0 5px #00ff00;
+    }
+
+    .gif-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .matrix {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      color: #00ff00;
+      font-size: 20px;
+      opacity: 0.3;
+      white-space: nowrap;
+    }
+
+    #terminal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #000;
+      color: #00ff00;
+      padding: 20px;
+      font-family: Courier New, monospace;
+      font-size: 1.3em;
+      border: 1px solid #00ff00;
+      box-shadow: 0 0 20px #00ff00;
+      z-index: 1000;
+      display: none;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Dobrodošli na projekat
+OSiRuO 2025!</h1>
+
+  <marquee scrollamount="10">Accessing mainframe... Loading protocols... Welcome, agent SIZE</marquee>
+
+  <div class="gif-container">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWNrNnpuMWl2bm1rYWI3ZzBxOXg3ajZlY3ZuMmhhM2hqOHp3bWFtZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abyKEbFsKtII0Eg/giphy.gif" 
+         alt="Hacker GIF" 
+         width="300" 
+         id="hacker-gif" 
+         style="cursor: pointer;">
+  </div>
+
+  <div class="matrix" id="matrix"></div>
+
+  <div id="terminal"></div>
+
+  <script>
+    
+    const matrix = document.getElementById("matrix");
+    const chars = "01 ";
+    const columns = Math.floor(window.innerWidth / 10);
+    function randomChar() {
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+    function generateMatrix() {
+      let str = "";
+      for (let i = 0; i < columns * 40; i++) {
+        str += randomChar();
+        if (i % columns === 0) str += "\n";
+      }
+      matrix.textContent = str;
+    }
+    setInterval(generateMatrix, 100);
+
+    const terminal = document.getElementById("terminal");
+    const terminalText = `> Initializing secure terminal...\n> Decrypting assets...\n> Access Granted ✅\nWelcome, agent.`;
+    let count = 0;
+    function showTerminalMessage() {
+      terminal.style.display = "block";
+      terminal.textContent = "";
+      let i = 0;
+      const type = setInterval(() => {
+        terminal.textContent += terminalText[i];
+        i++;
+        if (i >= terminalText.length) clearInterval(type);
+      }, 50);
+    }
+
+    document.getElementById("hacker-gif").addEventListener("click", () => {
+        if(count === 0) {
+              showTerminalMessage();
+            count++;
+        } else {
+            window.location.href = "https://www.youtube.com/watch?v=R78rPcCVa90&ab_channel=JugotonMusic";
+        }
+    
+    });
+  </script>
+
+</body>
+</html>
